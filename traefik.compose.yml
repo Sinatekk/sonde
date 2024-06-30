@@ -26,8 +26,8 @@ services:
       - --entrypoints.websecure.http.tls=true
       - --entrypoints.websecure.http.tls.certresolver=dns-cloudflare
 
-      - --entrypoints.websecure.http.tls.domains[3].main=sonde.exoblue.app
-      - --entrypoints.websecure.http.tls.domains[3].sans=*.sonde.exoblue.app
+      - --entrypoints.websecure.http.tls.domains[3].main=sonde.dylanlasjunies.fr
+      - --entrypoints.websecure.http.tls.domains[3].sans=*.sonde.dylanlasjunies.fr
       
       - --certificatesResolvers.dns-cloudflare.acme.email=$CLOUDFLARE_EMAIL
       - --certificatesResolvers.dns-cloudflare.acme.storage=/letsencrypt/acme.json
@@ -50,7 +50,7 @@ services:
       - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
       - "traefik.http.routers.traefik-rtr.entrypoints=websecure"
-      - "traefik.http.routers.traefik-rtr.rule=Host(`traefik.sonde.exoblue.app`)"
+      - "traefik.http.routers.traefik-rtr.rule=Host(`traefik.sonde.dylanlasjunies.fr`)"
       - "traefik.http.routers.traefik-rtr.service=api@internal"
     networks:
       - traefik

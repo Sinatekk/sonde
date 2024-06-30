@@ -75,7 +75,7 @@ services:
     labels:
       co.elastic.logs/module: elasticsearch
       traefik.enable: true
-      traefik.http.routers.elastic.rule: Host(`elastic.sonde.exoblue.app`)
+      traefik.http.routers.elastic.rule: Host(`elastic.sonde.dylanlasjunies.fr`)
       traefik.http.routers.elastic.entrypoints: websecure
       traefik.http.routers.elastic.service: elastic
       traefik.http.services.elastic.loadbalancer.server.port: ${ES_PORT}
@@ -131,7 +131,7 @@ services:
     labels:
       co.elastic.logs/module: kibana
       traefik.enable: true
-      traefik.http.routers.kibana.rule: Host(`kibana.sonde.exoblue.app`)
+      traefik.http.routers.kibana.rule: Host(`kibana.sonde.dylanlasjunies.fr`)
       traefik.http.routers.kibana.entrypoints: websecure
       traefik.http.routers.kibana.service: kibana
       traefik.http.services.kibana.loadbalancer.server.port: ${KIBANA_PORT}

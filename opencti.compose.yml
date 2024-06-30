@@ -67,7 +67,7 @@ services:
       - PROVIDERS__LOCAL__STRATEGY=LocalStrategy
     labels:
       traefik.enable: true
-      traefik.http.routers.opencti.rule: Host(`opencti.sonde.exoblue.app`)
+      traefik.http.routers.opencti.rule: Host(`opencti.sonde.dylanlasjunies.fr`)
       traefik.http.routers.opencti.entrypoints: websecure
       traefik.http.routers.opencti.service: opencti
       traefik.http.services.opencti.loadbalancer.server.port: 5050
