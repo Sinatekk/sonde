@@ -1,0 +1,21 @@
+############################
+### NETWORKS AND VOLUMES ###
+############################
+
+networks:
+  elastic:
+  traefik:
+    external: true
+  vulnerable:
+
+volumes:
+  certs: #for SSL certificates
+  elastic-data: #for ES data persistency
+  filebeat-data: #for filebeat data persistency
+  metricbeat-data: #for metricbeat data persistency
+  logstash-data: #for logstash data persistency
+  kibana-data: #for kibana data persistency
+  openvas-data: #for openvas data persistency
+  goaccess-data: #for goaccess data persistency
+
+  dvwa_db_data: #for dvwa database persistency

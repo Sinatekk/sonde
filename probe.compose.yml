@@ -1,0 +1,32 @@
+#######################
+### PROBES SERVICES ###
+#######################
+
+services:
+  suricata:
+    container_name: suricata
+    image: jasonish/suricata:master
+    restart: unless-stopped
+    environment:
+      - SURICATA_OPTIONS=-i ${INTERFACE} -vvv --set sensor-name=suricata
+    cap_add:
+      - NET_ADMIN
+      - SYS_NICE
+    network_mode: host
+    volumes:
+      - ./data/suricata/suricata.yaml:/etc/suricata/suricata.yaml
+      - ./data/suricata/logs:/var/log/suricata
+      - ./data/suricata/rules:/etc/suricata/rules
+
+  zeek:
+    container_name: zeek
+    image: blacktop/zeek:elastic
+    restart: unless-stopped
+    command: -i af_packet::${INTERFACE} local -C
+    cap_add:
+      - NET_ADMIN
+      - SYS_NICE
+    network_mode: host
+    volumes:
+      - ./data/zeek/local.zeek:/usr/local/zeek/share/zeek/site/local.zeek
+      - ./data/zeek/pcap:/pcap

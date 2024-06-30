@@ -1,0 +1,27 @@
+filebeat.config.modules:
+  # Glob pattern for configuration loading
+  path: /usr/share/filebeat/modules.d/*.yml
+
+  # Set to true to enable config reloading
+  reload.enabled: true
+
+setup.kibana:
+  host: ${KIBANA_HOSTS}
+  username: ${ELASTIC_USER}
+  password: ${ELASTIC_PASSWORD}
+  ssl:
+    enabled: true
+    certificate_authorities: ${CA_CERT}
+
+output.elasticsearch:
+  hosts: ${ELASTIC_HOSTS}
+  username: ${ELASTIC_USER}
+  password: ${ELASTIC_PASSWORD}
+  ssl:
+    enabled: true
+    certificate_authorities: ${CA_CERT}
+
+setup.ilm.enabled: false
+
+setup.template.settings:
+  index.number_of_replicas: 0

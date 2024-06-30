@@ -1,0 +1,14 @@
+.env
+
+data/filebeat_ingest_data/*
+!data/filebeat_ingest_data/.gitkeep
+
+data/logstash_ingest_data/*
+!data/logstash_ingest_data/.gitkeep
+
+data/suricata/logs
+data/traefik/letsencrypt/acme.json
+
+data/traefik/logs
+
+data/zeek/pcap

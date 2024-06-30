@@ -1,0 +1,47 @@
+include:
+  - ./networks_volumes.compose.yml
+  - ./elasticsearch.compose.yml
+  - ./beats.compose.yml
+  - ./probe.compose.yml
+  - ./logstash.compose.yml
+  - ./goaccess.compose.yml
+  - ./traefik.compose.yml
+  - ./opencti.compose.yml
+
+services:
+###############################
+########### OPENVAS ###########
+###############################
+
+  # openvas:
+  #   container_name: openvas
+  #   image: immauss/openvas:latest
+  #   restart: unless-stopped
+  #   ports:
+  #     - "9392:9392"
+  #   environment:
+  #     - "PASSWORD=admin"
+  #     - "USERNAME=admin"
+  #     - "NEWDB=false"
+  #     - "SKIPSYNC=true"
+  #   volumes:
+  #     - "openvas-data:/data"
+
+###############################
+####### VULNERABLE APP ########
+###############################
+  dvwa:
+    container_name: dvwa
+    image: kaakaww/dvwa-docker
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      - PHP_DISPLAY_ERRORS=1
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.vulnerable.rule=Host(`vulnerable.sonde.exoblue.app`)
+      - traefik.http.routers.vulnerable.entrypoints=websecure
+    networks:
+      - vulnerable
+      - traefik
