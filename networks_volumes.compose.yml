@@ -17,5 +17,6 @@ volumes:
   kibana-data: #for kibana data persistency
   openvas-data: #for openvas data persistency
   goaccess-data: #for goaccess data persistency
+  fleetserver-data: #for fleetserver data persistency
 
   dvwa_db_data: #for dvwa database persistency
